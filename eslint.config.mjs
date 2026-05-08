@@ -1,5 +1,5 @@
 import { defineConfig, globalIgnores } from "eslint/config";
-import nextVitalsConfig from "eslint-config-next/core-web-vitals";
+import nextVitalsConfig from "eslint-config-next/core-web-vitals.js";
 import frontendReactRules from "./eslint-rules/frontend-react-rules.mjs";
 
 const useEffectRestrictionMessage =
