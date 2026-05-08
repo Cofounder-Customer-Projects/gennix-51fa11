@@ -37,24 +37,30 @@ export default function CreatePage() {
 
   async function handleGenerate() {
     setIsGenerating(true);
-    // Simulated generation — replace with real OpenAI API call in next sprint
-    await new Promise((r) => setTimeout(r, 1800));
-    setBlueprint({
-      title: `7-Day ${niche || "Fat Loss"} Plan`,
-      chapters: [
-        "Introduction & Goal Setting",
-        "Nutrition Fundamentals",
-        "Week 1 Workout Schedule",
-        "Recovery & Sleep Protocols",
-        "Progress Tracking Methods",
-        "Maintaining Results",
-        "Bonus: Quick-Start Recipe Guide",
-      ],
-      estimatedPrice: "$19–$29",
-      pageCount: 28,
-    });
-    setIsGenerating(false);
-    setStep(2);
+    try {
+      const res = await fetch("/api/blueprint/generate", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ niche: niche.trim(), audience: audience.trim() }),
+      });
+      if (!res.ok) {
+        const err = await res.json().catch(() => ({}));
+        throw new Error(err.error || "Generation failed");
+      }
+      const data = await res.json();
+      setBlueprint(data);
+      setStep(2);
+    } catch (err) {
+      console.error("Blueprint generation failed:", err);
+      // Surface a visible error state without crashing the flow
+      alert(
+        err instanceof Error
+          ? err.message
+          : "Failed to generate blueprint. Please try again.",
+      );
+    } finally {
+      setIsGenerating(false);
+    }
   }
 
   return (
