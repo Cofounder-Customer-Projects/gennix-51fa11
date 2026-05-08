@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "type-check": "tsc --noEmit"
+    "type-check": "tsc --noEmit",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@chenglou/pretext": "^0.0.6",
@@ -23,6 +24,7 @@
     "stripe": "^22.1.1"
   },
   "devDependencies": {
+    "@biomejs/biome": "2.4.13",
     "@types/node": "^22",
     "@types/react": "^19",
     "@types/react-dom": "^19",

@@ -1,5 +1,4 @@
 import {
-  ShoppingBag,
   ExternalLink,
   CheckCircle2,
   AlertCircle,
@@ -156,6 +155,7 @@ export default function SellPage() {
                 gumroad.com/l/your-product
               </p>
               <button
+                type="button"
                 className="flex-shrink-0 p-1.5 hover:bg-stone/20 rounded transition-colors"
                 aria-label="Copy link"
               >

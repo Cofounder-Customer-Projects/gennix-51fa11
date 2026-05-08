@@ -28,7 +28,7 @@ export function AppNav() {
         {/* Segmented nav */}
         <nav className="flex items-center gap-1" aria-label="Main navigation">
           {navItems.map(({ label, href, icon: Icon }) => {
-            const isActive = pathname === href || pathname.startsWith(href + "/");
+            const isActive = pathname === href || pathname.startsWith(`${href}/`);
             return (
               <Link
                 key={href}

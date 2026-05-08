@@ -177,6 +177,7 @@ function Step1({
           {SUGGESTED_NICHES.map((s) => (
             <button
               key={s}
+              type="button"
               onClick={() => setNiche(s)}
               className="text-xs px-2.5 py-1 bg-surface-muted border border-stone text-midnight rounded-sm hover:border-midnight transition-colors font-body"
             >
@@ -253,7 +254,7 @@ function Step2({
         </p>
         <ol className="space-y-2">
           {blueprint.chapters.map((ch, i) => (
-            <li key={i} className="flex items-baseline gap-3">
+            <li key={ch} className="flex items-baseline gap-3">
               <span className="font-mono text-xs text-fg-muted flex-shrink-0 w-5">
                 {String(i + 1).padStart(2, "0")}
               </span>
