@@ -8,7 +8,7 @@ on:
 jobs:
   build:
     name: frontend-build
-    runs-on: ["self-hosted", "linux", "superoptimizers", "frontend-build"]
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
