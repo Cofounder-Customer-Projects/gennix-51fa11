@@ -1,37 +1,79 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-@theme {
-  --color-ink: #0b1220;
-  --shadow-soft: 0 24px 80px rgba(15, 23, 42, 0.12);
+:root {
+  /* Brand tokens */
+  --color-midnight: #0f1b2e;
+  --color-energy: #ff6b4a;
+  --color-bloom: #ff7eb8;
+  --color-mint: #2ec4b6;
+  --color-sand: #f7f3ef;
+  --color-stone: #d7dbe0;
+  --color-surface-muted: #f1ece6;
+  --color-fg-muted: #5a6473;
+
+  /* Semantic */
+  --bg: var(--color-sand);
+  --surface: #ffffff;
+  --fg: var(--color-midnight);
+  --fg-muted: var(--color-fg-muted);
+  --border: var(--color-stone);
+  --accent: var(--color-energy);
+  --accent-alt: var(--color-bloom);
+  --success: var(--color-mint);
+  --focus-ring: var(--color-bloom);
 }
 
-@layer base {
-  :root {
-    color-scheme: light;
-  }
+* {
+  box-sizing: border-box;
+}
 
-  * {
-    box-sizing: border-box;
-  }
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-inter), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 
-  html,
-  body {
-    min-height: 100%;
-  }
+/* Focus ring */
+:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}
 
-  body {
-    margin: 0;
-    background-color: #f8fafc;
-    color: #020617;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    background-image:
-      radial-gradient(circle at top, rgba(37, 99, 235, 0.14), transparent 32%),
-      linear-gradient(180deg, #f8fafc 0%, #e0ecff 100%);
-  }
+/* Scrollbar – minimal */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-stone);
+  border-radius: 999px;
+}
 
-  a {
-    color: inherit;
-    text-decoration: none;
-  }
+/* Typography helpers */
+.font-display {
+  font-family: var(--font-fraunces), Georgia, serif;
+}
+.font-mono-gennix {
+  font-family: var(--font-jetbrains), ui-monospace, monospace;
+}
+
+/* Signature gradient */
+.gradient-accent {
+  background: linear-gradient(135deg, #ff6b4a 0%, #ff7eb8 100%);
+}
+.gradient-accent-text {
+  background: linear-gradient(135deg, #ff6b4a 0%, #ff7eb8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }

@@ -1,31 +1,52 @@
 import type { Metadata } from "next";
-import Script from "next/script";
-import type { ReactNode } from "react";
-import Providers from "@/components/Providers";
+import { Fraunces, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
+const fraunces = Fraunces({
+  subsets: ["latin"],
+  variable: "--font-fraunces",
+  weight: ["400", "700", "900"],
+  display: "swap",
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  weight: ["400", "500", "600"],
+  display: "swap",
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-jetbrains",
+  weight: ["400", "500"],
+  display: "swap",
+});
+
 export const metadata: Metadata = {
-  title: "Managed Next.js Starter",
-  description: "A seeded Next.js starter with Supabase SSR and React Query.",
+  title: "Gennix — Idea to first sale. Under 45 minutes.",
+  description:
+    "AI-powered tools for fitness creators to generate sellable PDF products and sell them fast.",
+  metadataBase: new URL("https://gennix.app"),
+  openGraph: {
+    title: "Gennix — Idea to first sale. Under 45 minutes.",
+    description:
+      "AI-powered tools for fitness creators to generate sellable PDF products and sell them fast.",
+    type: "website",
+  },
 };
 
-export default function RootLayout({ children }: { children: ReactNode }) {
-  const isPreviewEnvironment =
-    process.env.NODE_ENV !== "development" &&
-    (process.env.VERCEL_TARGET_ENV === "preview" ||
-      process.env.VERCEL_ENV === "preview");
-
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
-    <html lang="en">
-      <body className="min-h-screen">
-        {isPreviewEnvironment ? (
-          <Script
-            src="https://app.cofounder.co/agentation/widget.js"
-            strategy="afterInteractive"
-          />
-        ) : null}
-        <Providers>{children}</Providers>
-      </body>
+    <html
+      lang="en"
+      className={`${fraunces.variable} ${inter.variable} ${jetbrainsMono.variable}`}
+    >
+      <body>{children}</body>
     </html>
   );
 }
