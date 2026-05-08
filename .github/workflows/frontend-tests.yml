@@ -8,7 +8,7 @@ on:
 jobs:
   frontend-tests:
     name: frontend-tests
-    runs-on: ["self-hosted", "linux", "superoptimizers", "frontend-tests"]
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository

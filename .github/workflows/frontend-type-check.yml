@@ -8,7 +8,7 @@ on:
 jobs:
   frontend-type-check:
     name: frontend-type-check
-    runs-on: ["self-hosted", "linux", "superoptimizers", "frontend-type-check"]
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
