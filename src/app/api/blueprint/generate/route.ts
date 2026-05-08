@@ -1,10 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import OpenAI from "openai";
 
-const client = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
-
 // Niche-specific context injected into the prompt so chapters are relevant
 const NICHE_CONTEXT: Record<
   string,
@@ -115,6 +111,8 @@ export async function POST(request: NextRequest) {
         { status: 500 },
       );
     }
+
+    const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
     const nicheCtx = getNicheContext(niche);
     const audienceStr = audience?.trim() || `people interested in ${niche}`;
